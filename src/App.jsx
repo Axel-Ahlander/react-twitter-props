@@ -19,7 +19,7 @@ function App() {
     const [createTweetContent, setCreateTweetContent] = useState('')
     const [searchBar, setSearchBar] = useState('');
 
-    let currTweets = tweets.filter((tweet) => tweet.content.toLowerCase().includes(searchBar));
+    let currTweets = tweets.filter((tweet) => tweet.content.toLowerCase().includes(searchBar) || tweet.name.toLowerCase().includes(searchBar));
 
     const handleChange = (event) => {
         setSearchBar(event.target.value.toLowerCase());
