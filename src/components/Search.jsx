@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Search() {
+function Search({onChange}) {
   return (
     <div className='search-section'>
                         <i className="fa-solid fa-magnifying-glass search-icon"></i>
-                        <input className="search" type="text" placeholder="Search Twitter" />
+                        <input className="search" type="text" placeholder="Search Twitter" onChange = {onChange}  />
                     </div>
     
   )

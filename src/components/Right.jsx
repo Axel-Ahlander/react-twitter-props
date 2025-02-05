@@ -7,7 +7,7 @@ import Search from './Search'
 function Right(props) {
   return (
     <aside className='right-side'>
-                    <Search/>
+                    <Search onChange = {props.onChange}/>
     
                     <GetVerified/>
     

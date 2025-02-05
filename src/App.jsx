@@ -17,7 +17,15 @@ function App() {
     const [loggedInUser] = useState(user)
     const [tweets, setTweets] = useState(initialTweets)
     const [createTweetContent, setCreateTweetContent] = useState('')
+    const [searchBar, setSearchBar] = useState('');
 
+    let currTweets = tweets.filter((tweet) => tweet.content.toLowerCase().includes(searchBar));
+
+    const handleChange = (event) => {
+        setSearchBar(event.target.value.toLowerCase());
+    }
+
+    
     const addTweet = (e) => {
         e.preventDefault()
         setTweets([
@@ -34,17 +42,36 @@ function App() {
         ])
     }
 
+    if (searchBar === ''){
+            
+    
+
     return (
+        
         <div className="container">
             
             <Left loggedInUser = {loggedInUser} />
 
-            <Middle setCreateTweetContent = {setCreateTweetContent} loggedInUser = {loggedInUser} addTweet = {addTweet} createTweetContent = {createTweetContent} tweets = {tweets}/>
+            <Middle setCreateTweetContent = {setCreateTweetContent} loggedInUser = {loggedInUser} addTweet = {addTweet} createTweetContent = {createTweetContent} tweets = {currTweets}/>
 
-            <Right imgElon = {imgElon} imgZuck = {imgZuck}/>
+            <Right imgElon = {imgElon} imgZuck = {imgZuck} onChange = {handleChange}/>
 
         </div>
     )
+}
+    else {
+        return(
+        <div className="container">
+            
+            <Left loggedInUser = {loggedInUser} />
+
+            <Middle setCreateTweetContent = {setCreateTweetContent} loggedInUser = {loggedInUser} addTweet = {addTweet} createTweetContent = {createTweetContent} tweets = {currTweets}/>
+
+            <Right imgElon = {imgElon} imgZuck = {imgZuck} onChange = {handleChange}/>
+
+        </div>
+        )
+    }
 }
 
 export default App
